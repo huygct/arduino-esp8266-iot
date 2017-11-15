@@ -1,0 +1,37 @@
+<div class="scrollable">
+  <div class="scrollable-content">
+    <div class="list-group text-center">
+      <!-- cục giới thiệu -->
+      <div class="list-group-item list-group-item-home">
+        <h1>Minh Tri Department</h1>
+        <h3>68 Trần Thủ Độ - Tân Phú</h3>
+      </div>
+
+      <!-- Cục cảm  nhiệt độ và độ ẩm-->
+      <div class="list-group-item list-group-item-home">
+        <div>
+          <i class="fa fa-gamepad feature-icon text-primary"></i>
+        </div>
+        <div>
+          <h3 class="home-heading">Hôm nay {{date}}</h3>
+          <p>Nhiệt độ: {{temp.t}}</p>
+          <p>Độ ẩm: {{temp.h}}</p>
+        </div>
+      </div>
+
+      <!-- Cục thay đổi trạng thái LED -->
+      <div class="list-group-item list-group-item-home">
+        <div>
+          <i class="fa fa-tachometer feature-icon  text-primary"></i>
+        </div>
+        <div>
+          <h3 class="home-heading">TRẠNG THÁI ĐÈN LED</h3>
+          <div ng-repeat="led_value in leds_status  track by $index">
+            <span>Đèn LED {{$index + 1}} đang </span>
+            <ui-switch style="margin: auto" ng-model="leds_status[$index]" ng-change="changeLED()"></ui-switch>
+          </div>
+        </div>
+      </div>
+		</div>
+	</div>
+</div>
