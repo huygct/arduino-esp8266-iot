@@ -32,6 +32,20 @@
           </div>
         </div>
       </div>
+
+      <!-- Cục thay đổi trạng thái MOTOR-->
+      <div class="list-group-item list-group-item-home">
+        <div>
+          <i class="fa fa-tachometer feature-icon  text-primary"></i>
+        </div>
+        <div>
+          <h3 class="home-heading">ĐIỀU KHIỂN MOTOR</h3>
+          <div>
+            <span>Motor 1 đang </span>
+            <ui-switch style="margin: auto" ng-model="motorStatus" ng-change="runMotor()"></ui-switch>
+          </div>
+        </div>
+      </div>
 		</div>
 	</div>
 </div>

@@ -23,6 +23,7 @@ angular.module('myApp', [
   $scope.date = new Date().toISOString().slice(0,10);
   $scope.leds_status = [0, 0];
   $scope.temp = {};
+  $scope.motorStatus = false;
 
   ////Khu 2 -- Cài đặt các sự kiện khi tương tác với người dùng
   //các sự kiện ng-click, nhấn nút
@@ -35,6 +36,13 @@ angular.module('myApp', [
       "led": [$scope.leds_status[0] ? 1 : 0, $scope.leds_status[1] ? 1 : 0]
     }
     mySocket.emit("LED", json)
+  }
+
+  $scope.runMotor = function () {
+    var json = {
+      "role": $scope.motorStatus ? 1 : 0
+    }
+    mySocket.emit("MOTOR", json)
   }
 
   ////Khu 3 -- Nhận dữ liệu từ Arduno gửi lên (thông qua ESP8266 rồi socket server truyền tải!)
