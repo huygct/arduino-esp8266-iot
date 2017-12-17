@@ -21,10 +21,19 @@ angular.module('myApp', [
   //cài đặt một số tham số test chơi
   //dùng để đặt các giá trị mặc định
   $scope.date = new Date().toISOString().slice(0,10);
-  $scope.leds_status = [0, 0];
+  $scope.leds_status = [0];
   $scope.temp = {};
-  $scope.motorStatus = false;
+  $scope.motorThuan = false;
+  $scope.motorNghich = false;
+  $scope.fanStatus = false;
+  $scope.AUTO = true;
 
+  $scope.changeStatus = function () {
+    var json = {
+      "status": $scope.AUTO ? 1 : 0 
+    }
+    mySocket.emit("STATUS", json)
+  }
   ////Khu 2 -- Cài đặt các sự kiện khi tương tác với người dùng
   //các sự kiện ng-click, nhấn nút
   $scope.updateSensor = function () {
@@ -40,9 +49,16 @@ angular.module('myApp', [
 
   $scope.runMotor = function () {
     var json = {
-      "role": $scope.motorStatus ? 1 : 0
+      "role": $scope.motorThuan ? 1 : $scope.motorNghich ? 2 : 0
     }
     mySocket.emit("MOTOR", json)
+  }
+
+  $scope.runFan = function () {
+    var json = {
+      "role": $scope.fanStatus ? 1 : 0
+    }
+    mySocket.emit("FAN", json)
   }
 
   ////Khu 3 -- Nhận dữ liệu từ Arduno gửi lên (thông qua ESP8266 rồi socket server truyền tải!)
@@ -51,8 +67,10 @@ angular.module('myApp', [
     // console.log("Nhiet do ", json)
     $scope.temp = {
       t: json.t,
-      h: json.h
-    }
+      h: json.h,
+      l: json.l
+    };
+    $scope.AUTO = json.status === 1;
   })
   //Khi nhận được lệnh LED_STATUS
   mySocket.on('LED_STATUS', function (json) {

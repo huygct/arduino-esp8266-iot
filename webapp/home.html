@@ -3,8 +3,8 @@
     <div class="list-group text-center">
       <!-- cục giới thiệu -->
       <div class="list-group-item list-group-item-home">
-        <h1>Minh Tri Department</h1>
-        <h3>68 Trần Thủ Độ - Tân Phú</h3>
+
+        <h1>TÍNH TOÁN VÀ THIẾT KẾ ĐIỀU KHIỂN HỆ THỐNG NHÀ KÍNH HỘ GIA ĐÌNH</h1>
       </div>
 
       <!-- Cục cảm  nhiệt độ và độ ẩm-->
@@ -13,39 +13,71 @@
           <i class="fa fa-gamepad feature-icon text-primary"></i>
         </div>
         <div>
-          <h3 class="home-heading">Hôm nay {{date}}</h3>
-          <p>Nhiệt độ: {{temp.t}}</p>
-          <p>Độ ẩm: {{temp.h}}</p>
+          <h1 class="home - heading">Hôm nay: {{date}}</h1>
+          <h2>Nhiệt độ: {{temp.t}}'C</h2>
+          <h2>Độ ẩm: {{temp.h}}%</h2>
+          <h2>Ánh Sáng: {{temp.l}}lux</h2>
         </div>
       </div>
-
-      <!-- Cục thay đổi trạng thái LED -->
+      <!-- auto or not -->
       <div class="list-group-item list-group-item-home">
         <div>
           <i class="fa fa-tachometer feature-icon  text-primary"></i>
         </div>
         <div>
-          <h3 class="home-heading">TRẠNG THÁI ĐÈN LED</h3>
-          <div ng-repeat="led_value in leds_status  track by $index">
-            <span>Đèn LED {{$index + 1}} đang </span>
-            <ui-switch style="margin: auto" ng-model="leds_status[$index]" ng-change="changeLED()"></ui-switch>
-          </div>
-        </div>
-      </div>
-
-      <!-- Cục thay đổi trạng thái MOTOR-->
-      <div class="list-group-item list-group-item-home">
-        <div>
-          <i class="fa fa-tachometer feature-icon  text-primary"></i>
-        </div>
-        <div>
-          <h3 class="home-heading">ĐIỀU KHIỂN MOTOR</h3>
+          <h3 class="home-heading">{{AUTO ? 'ĐANG ĐIỀU KHIỂN TỰ ĐỘNG' : 'ĐIỀU KHIỂN BẰNG WEB'}}</h3>
           <div>
-            <span>Motor 1 đang </span>
-            <ui-switch style="margin: auto" ng-model="motorStatus" ng-change="runMotor()"></ui-switch>
+            <ui-switch style="margin: auto" ng-model="AUTO" ng-change="changeStatus()"></ui-switch>
           </div>
         </div>
       </div>
-		</div>
-	</div>
+
+      <div ng-hide="AUTO">
+        <!-- Cục thay đổi trạng thái LED -->
+        <div class="list-group-item list-group-item-home">
+          <div>
+            <i class="fa fa-tachometer feature-icon  text-primary"></i>
+          </div>
+          <div>
+            <h3 class="home-heading">ĐIỀU KHIỂN ĐÈN LED</h3>
+            <div ng-repeat="led_value in leds_status  track by $index">
+              <span>Bật/Tắt Đèn LED </span>
+              <ui-switch style="margin: auto" ng-model="leds_status[$index]" ng-change="changeLED()"></ui-switch>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cục thay đổi trạng thái MOTOR-->
+        <div class="list-group-item list-group-item-home">
+          <div>
+            <i class="fa fa-tachometer feature-icon  text-primary"></i>
+          </div>
+          <div>
+            <h3 class="home-heading">ĐIỀU KHIỂN MÀN CẮT NẮNG</h3>
+            <div>
+              <span> Cuốn Màn Cắt Nắng </span>
+              <ui-switch style="margin: auto" ng-model="motorThuan" ng-change="runMotor()"></ui-switch>
+            </div>
+            <div>
+              <span> Thả Màn Cắt Nắng</span>
+              <ui-switch style="margin: auto" ng-model="motorNghich" ng-change="runMotor()"></ui-switch>
+            </div>
+          </div>
+        </div>
+        <!-- Cục thay đổi trạng thái FAN-->
+        <div class="list-group-item list-group-item-home">
+          <div>
+            <i class="fa fa-tachometer feature-icon  text-primary"></i>
+          </div>
+          <div>
+            <h3 class="home-heading">ĐIỀU KHIỂN QUẠT</h3>
+            <div>
+              <span> Bật/Tắt Quạt </span>
+              <ui-switch style="margin: auto" ng-model="fanStatus" ng-change="runFan()"></ui-switch>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
