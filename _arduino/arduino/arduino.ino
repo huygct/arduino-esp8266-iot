@@ -81,6 +81,9 @@ void motorChayThuan() {
   digitalWrite(in1, HIGH);
   digitalWrite(in2, LOW); 
   analogWrite(enA, 230); // tốc độ 200, giá trị từ 0~255, băm xung PWM, mức cao 200/255. mức thấp 55/255. Tốc độ chạy khoảng (200/255)%.
+  // chay 5s tat
+//  delay(5000)
+//  motorTat();
 }
 void motorChayNghich() {
   digitalWrite(in1, LOW);
@@ -124,7 +127,7 @@ void loop() {
       } else {
         quatTat();
       }
-      if(humidity < 50) { // do am
+      if(humidity < 85) { // do am
         digitalWrite(red, 1);
         digitalWrite(blue, 1);
       } else {
@@ -186,25 +189,25 @@ void led() {
     Serial.print(F("blueStatus "));
     Serial.println(blueStatus);
   
-    StaticJsonBuffer<200> jsonBuffer2;
-    JsonObject& root2 = jsonBuffer2.createObject();
-    root2["redStatus"] = redStatus;
-    root2["blueStatus"] = blueStatus;
-  
-    //Tạo một mảng trong JSON
-    JsonArray& data = root2.createNestedArray("data");
-    data.add(redStatus);
-    data.add(blueStatus);
-  
-  
-    //in ra cổng software serial để ESP8266 nhận
-    mySerial.print("LED_STATUS");   //gửi tên lệnh
-    mySerial.print('\r');           // gửi \r
-    root2.printTo(mySerial);        //gửi chuỗi JSON
-    mySerial.print('\r');           // gửi \r
-  
-    //in ra Serial để debug
-    root2.printTo(Serial); //Xuống dòng
+//    StaticJsonBuffer<200> jsonBuffer2;
+//    JsonObject& root2 = jsonBuffer2.createObject();
+//    root2["redStatus"] = redStatus;
+//    root2["blueStatus"] = blueStatus;
+//  
+//    //Tạo một mảng trong JSON
+//    JsonArray& data = root2.createNestedArray("data");
+//    data.add(redStatus);
+//    data.add(blueStatus);
+//  
+//  
+//    //in ra cổng software serial để ESP8266 nhận
+//    mySerial.print("LED_STATUS");   //gửi tên lệnh
+//    mySerial.print('\r');           // gửi \r
+//    root2.printTo(mySerial);        //gửi chuỗi JSON
+//    mySerial.print('\r');           // gửi \r
+//  
+//    //in ra Serial để debug
+//    root2.printTo(Serial); //Xuống dòng
   
     //xuất ra màn hình
     digitalWrite(red, redStatus);

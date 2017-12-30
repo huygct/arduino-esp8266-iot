@@ -4,7 +4,7 @@
       <!-- cục giới thiệu -->
       <div class="list-group-item list-group-item-home">
 
-        <h1>TÍNH TOÁN VÀ THIẾT KẾ ĐIỀU KHIỂN HỆ THỐNG NHÀ KÍNH HỘ GIA ĐÌNH</h1>
+        <h1> THIẾT KẾ HỆ THỐNG CHĂM SÓC VƯỜN RAU TRONG NHÀ KÍNH HỘ GIA ĐÌNH</h1>
       </div>
 
       <!-- Cục cảm  nhiệt độ và độ ẩm-->
@@ -14,9 +14,9 @@
         </div>
         <div>
           <h1 class="home - heading">Hôm nay: {{date}}</h1>
-          <h2>Nhiệt độ: {{temp.t}}'C</h2>
-          <h2>Độ ẩm: {{temp.h}}%</h2>
-          <h2>Ánh Sáng: {{temp.l}}lux</h2>
+            <h2>Nhiệt độ: {{temp.t}}'C</h2>
+            <h2>Độ ẩm: {{temp.h}}%</h2> 
+            <h2>Ánh Sáng: 536lux</h2>    
         </div>
       </div>
       <!-- auto or not -->
@@ -39,9 +39,9 @@
             <i class="fa fa-tachometer feature-icon  text-primary"></i>
           </div>
           <div>
-            <h3 class="home-heading">ĐIỀU KHIỂN ĐÈN LED</h3>
+            <h3 class="home-heading">ĐIỀU KHIỂN TƯỚI PHUN SƯƠNG</h3>
             <div ng-repeat="led_value in leds_status  track by $index">
-              <span>Bật/Tắt Đèn LED </span>
+              <span>Bật/Tắt BƠM PHUN SƯƠNG </span>
               <ui-switch style="margin: auto" ng-model="leds_status[$index]" ng-change="changeLED()"></ui-switch>
             </div>
           </div>
