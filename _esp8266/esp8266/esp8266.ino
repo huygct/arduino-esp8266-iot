@@ -19,10 +19,10 @@ SocketIOClient client;
 const char* ssid = "DangKhoa";          //Tên mạng Wifi mà Socket server của bạn đang kết nối
 const char* password = "333444555a";  //Pass mạng wifi ahihi, anh em rãnh thì share pass cho mình với.
 
-//char host[] = "mt68.herokuapp.com";  //Địa chỉ IP dịch vụ, hãy thay đổi nó theo địa chỉ IP Socket server của bạn..
-char host[] = "192.168.137.61";
-//int port = 80; // 3484                 //Cổng dịch vụ socket server do chúng ta tạo!
-int port = 3484;
+char host[] = "mt68.herokuapp.com";  //Địa chỉ IP dịch vụ, hãy thay đổi nó theo địa chỉ IP Socket server của bạn..
+//char host[] = "192.168.137.61";
+int port = 80; // 3484                 //Cổng dịch vụ socket server do chúng ta tạo!
+//int port = 3484;
 char namespace_esp8266[] = "esp8266";   //Thêm Arduino!
 
 //từ khóa extern: dùng để #include các biến toàn cục ở một số thư viện khác. Trong thư viện SocketIOClient có hai biến toàn cục

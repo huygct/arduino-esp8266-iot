@@ -29,7 +29,6 @@ angular.module('myApp', [
   $scope.AUTO = true;
 
   $scope.changeStatus = function () {
-    console.log('---- ', $scope.AUTO)
     var json = {
       "status": $scope.AUTO ? 1 : 0 
     }
